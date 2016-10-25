@@ -1,37 +1,62 @@
 //your variable declarations here
+SpaceShip wilsonian;
 public void setup() 
 {
-  //your code here
-size(500,500);
+size(700,700);
 background(125);
+SpaceShip wilsonian = new SpaceShip();
 }
 public void draw() 
 {
-  //your code here
+  wilsonian.show();
 }
 class SpaceShip extends Floater  
 {   
-    //your code here
+  public SpaceShip() {
+    corners = 5;
+  xCorners = new int[corners];
+  yCorners = new int[corners];
+  xCorners[0] = -10;
+  yCorners[0] = -10;
+  xCorners[1] = 14;
+  yCorners[1] = 0;
+  xCorners[2] = -10;
+  yCorners[2] = 10;
+  xCorners[3] = -3;
+  yCorners[3] = 3;
+  xCorners[4] = -3;
+  yCorners[4] = -3;
+  abstract public void setX(int x) {x = 350;}
+  abstract public int getX() {return myCenterX; }  
+  abstract public void setY(int y) {y = 350;}   
+  abstract public int getY() {return myCenterY;}  
+  abstract public void setDirectionX(double x) {myDirectionX = 350;}  
+  abstract public double getDirectionX() {return myDirectionX;}  
+  abstract public void setDirectionY(double y) {myDirectionY = 350;}  
+  abstract public double getDirectionY() {return myDirectionY;}  
+  abstract public void setPointDirection(int degrees) {myPointDirection = degrees;}   
+  abstract public double getPointDirection() {return myPointDiretion;} 
+  }
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
   protected int[] xCorners;   
   protected int[] yCorners;   
-  protected int myColor;   
+  protected int myColor; 
   protected double myCenterX, myCenterY; //holds center coordinates   
   protected double myDirectionX, myDirectionY; //holds x and y coordinates of the vector for direction of travel   
   protected double myPointDirection; //holds current direction the ship is pointing in degrees    
-  abstract public void setX(int x) {x = 100;}
-  abstract public int getX() {return x; }  
-  abstract public void setY(int y) {y = 100;}   
-  abstract public int getY() {return y;}  
-  abstract public void setDirectionX(double x);   
-  abstract public double getDirectionX();   
-  abstract public void setDirectionY(double y);   
-  abstract public double getDirectionY();   
-  abstract public void setPointDirection(int degrees);   
-  abstract public double getPointDirection(); 
+  abstract public void setX(int x);
+  abstract public int getX() ;
+  abstract public void setY(int y);
+  abstract public int getY();
+  abstract public void setDirectionX(double x) ;
+  abstract public double getDirectionX() ;
+  abstract public void setDirectionY(double y);
+  abstract public double getDirectionY() ;
+  abstract public void setPointDirection(int degrees);
+  abstract public double getPointDirection() ;
 
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
   public void accelerate (double dAmount)   
