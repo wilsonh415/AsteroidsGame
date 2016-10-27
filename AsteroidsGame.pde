@@ -1,10 +1,9 @@
 //your variable declarations here
-SpaceShip wilsonian;
+SpaceShip wilsonian = new SpaceShip();
 public void setup() 
 {
 size(700,700);
 background(125);
-SpaceShip wilsonian = new SpaceShip();
 }
 public void draw() 
 {
@@ -13,29 +12,50 @@ public void draw()
 class SpaceShip extends Floater  
 {   
   public SpaceShip() {
-    corners = 5;
+  corners = 5;
   xCorners = new int[corners];
   yCorners = new int[corners];
-  xCorners[0] = -10;
-  yCorners[0] = -10;
-  xCorners[1] = 14;
-  yCorners[1] = 0;
-  xCorners[2] = -10;
-  yCorners[2] = 10;
-  xCorners[3] = -3;
-  yCorners[3] = 3;
-  xCorners[4] = -3;
-  yCorners[4] = -3;
-  abstract public void setX(int x) {x = 350;}
-  abstract public int getX() {return myCenterX; }  
-  abstract public void setY(int y) {y = 350;}   
-  abstract public int getY() {return myCenterY;}  
-  abstract public void setDirectionX(double x) {myDirectionX = 350;}  
-  abstract public double getDirectionX() {return myDirectionX;}  
-  abstract public void setDirectionY(double y) {myDirectionY = 350;}  
-  abstract public double getDirectionY() {return myDirectionY;}  
-  abstract public void setPointDirection(int degrees) {myPointDirection = degrees;}   
-  abstract public double getPointDirection() {return myPointDiretion;} 
+  xCorners[0] = 340;
+  yCorners[0] = 340;
+  xCorners[1] = 364;
+  yCorners[1] = 350;
+  xCorners[2] = 340;
+  yCorners[2] = 360;
+  xCorners[3] = 347;
+  yCorners[3] = 353;
+  xCorners[4] = 347;
+  yCorners[4] = 347;
+}
+public void setX(int x) {myCenterX = x;}
+public int getX() {return (int)myCenterX;}  
+public void setY(int y) {myCenterY = y;}   
+public int getY() {return (int)myCenterY;}  
+public void setDirectionX(double x) {myDirectionX = x;} 
+public double getDirectionX() {return myDirectionX;}  
+public void setDirectionY(double y) {myDirectionY = y;}  
+public double getDirectionY() {return myDirectionY;}  
+public void setPointDirection(int degrees) {myPointDirection = degrees;}   
+public double getPointDirection() {return myPointDirection;} 
+}
+  public void KeyPressed() {
+    if(keyCode == 37) { // left key
+      wilsonian.rotate(float -.25);
+    }
+    if(keyCode == 39) { //right key
+      wilsonian.rotate(float .25);
+    }
+    if(keyCode == 38) { //up key
+      wilsonian.accelerate(double 1);
+    }
+    if(keyCode == 40) { // down key
+      wilsonian.accelerate(double -1);
+    }
+//hyperspace
+  if(keyCode == 49) {
+    //direction
+    wilsonian.setDirectionX(0);
+    wilsonian.setDirectionY(0);
+    //position
   }
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
@@ -48,7 +68,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   protected double myDirectionX, myDirectionY; //holds x and y coordinates of the vector for direction of travel   
   protected double myPointDirection; //holds current direction the ship is pointing in degrees    
   abstract public void setX(int x);
-  abstract public int getX() ;
+  abstract public int getX();
   abstract public void setY(int y);
   abstract public int getY();
   abstract public void setDirectionX(double x) ;
