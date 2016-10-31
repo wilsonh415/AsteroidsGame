@@ -7,7 +7,33 @@ background(125);
 }
 public void draw() 
 {
+  background(125);
+  wilsonian.move();
   wilsonian.show();
+  
+}
+public void KeyPressed() {
+    if(keyCode == 37) { // left key
+      wilsonian.rotate(-1);
+    }
+    if(keyCode == 39) { //right key
+      wilsonian.rotate(1);
+    }
+    if(keyCode == 38) { //up key
+      wilsonian.accelerate(1);
+    }
+    if(keyCode == 40) { // down key
+      wilsonian.accelerate(-1);
+    }
+//hyperspace
+  if(keyCode == 49) {
+    //direction
+    wilsonian.setDirectionX(PI/2);
+    wilsonian.setDirectionY(PI/2);
+    //position
+    wilsonian.setX((int)(Math.random()*700));
+    wilsonian.setY((int)(Math.random()*700));
+  }
 }
 class SpaceShip extends Floater  
 {   
@@ -37,27 +63,7 @@ public double getDirectionY() {return myDirectionY;}
 public void setPointDirection(int degrees) {myPointDirection = degrees;}   
 public double getPointDirection() {return myPointDirection;} 
 }
-  public void KeyPressed() {
-    if(keyCode == 37) { // left key
-      wilsonian.rotate(float -.25);
-    }
-    if(keyCode == 39) { //right key
-      wilsonian.rotate(float .25);
-    }
-    if(keyCode == 38) { //up key
-      wilsonian.accelerate(double 1);
-    }
-    if(keyCode == 40) { // down key
-      wilsonian.accelerate(double -1);
-    }
-//hyperspace
-  if(keyCode == 49) {
-    //direction
-    wilsonian.setDirectionX(0);
-    wilsonian.setDirectionY(0);
-    //position
-  }
-}
+
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
@@ -99,15 +105,15 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     myCenterY += myDirectionY;     
 
     //wrap around screen    
-    if(myCenterX >width)
+    if(myCenterX > width)
     {     
       myCenterX = 0;    
     }    
-    else if (myCenterX<0)
+    else if (myCenterX < 0)
     {     
       myCenterX = width;    
     }    
-    if(myCenterY >height)
+    if(myCenterY > height)
     {    
       myCenterY = 0;    
     }   
