@@ -1,35 +1,43 @@
 //your variable declarations here
+Stars[] theSky = new Stars[500];
 SpaceShip wilsonian = new SpaceShip();
 public void setup() 
 {
 size(700,700);
 background(125);
+for(int i = 0; i < theSky.length; i++) {
+  theSky[i] = new Stars();
+}
 }
 public void draw() 
 {
   background(125);
   wilsonian.move();
   wilsonian.show();
+  for(int i = 0; i < theSky.length; i++) {
+  theSky[i].show();
+}
   
 }
 public void KeyPressed() {
-    if(keyCode == 37) { // left key
-      wilsonian.rotate(-1);
+    if(keyCode == LEFT) { // left key
+      wilsonian.rotate(-2);
     }
-    if(keyCode == 39) { //right key
-      wilsonian.rotate(1);
+    if(keyCode == RIGHT) { //right key
+      wilsonian.rotate(2);
     }
-    if(keyCode == 38) { //up key
-      wilsonian.accelerate(1);
+    if(keyCode == UP) { //up key
+      wilsonian.accelerate(10);
     }
-    if(keyCode == 40) { // down key
-      wilsonian.accelerate(-1);
+    if(keyCode == DOWN) { // down key
+      wilsonian.accelerate(-10);
     }
 //hyperspace
-  if(keyCode == 49) {
+  if(keyCode == 79) //o key 
+  {
     //direction
-    wilsonian.setDirectionX(PI/2);
-    wilsonian.setDirectionY(PI/2);
+    wilsonian.setDirectionX((int)((Math.random()*2)*PI));
+    wilsonian.setDirectionY((int)((Math.random()*2)*PI));
     //position
     wilsonian.setX((int)(Math.random()*700));
     wilsonian.setY((int)(Math.random()*700));
@@ -64,6 +72,18 @@ public void setPointDirection(int degrees) {myPointDirection = degrees;}
 public double getPointDirection() {return myPointDirection;} 
 }
 
+class Stars {
+  private int myX, myY;
+  public Stars() {
+  myX = (int)(Math.random()*700);
+  myY = (int)(Math.random()*700);
+  }
+  public void show() {
+    fill(0,255,0);
+    ellipse(myX, myY, 5, 5);
+  }
+}
+
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
@@ -77,12 +97,12 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   abstract public int getX();
   abstract public void setY(int y);
   abstract public int getY();
-  abstract public void setDirectionX(double x) ;
-  abstract public double getDirectionX() ;
+  abstract public void setDirectionX(double x);
+  abstract public double getDirectionX();
   abstract public void setDirectionY(double y);
-  abstract public double getDirectionY() ;
+  abstract public double getDirectionY();
   abstract public void setPointDirection(int degrees);
-  abstract public double getPointDirection() ;
+  abstract public double getPointDirection();
 
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
   public void accelerate (double dAmount)   
