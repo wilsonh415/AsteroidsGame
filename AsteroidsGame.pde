@@ -1,6 +1,7 @@
 //your variable declarations here
 Stars[] theSky = new Stars[500];
 SpaceShip wilsonian = new SpaceShip();
+
 public void setup() 
 {
 size(700,700);
@@ -8,29 +9,31 @@ background(125);
 for(int i = 0; i < theSky.length; i++) {
   theSky[i] = new Stars();
 }
+wilsonian.setX(350);
+wilsonian.setY(350);
 }
 public void draw() 
 {
   background(125);
-  wilsonian.move();
-  wilsonian.show();
+  
   for(int i = 0; i < theSky.length; i++) {
   theSky[i].show();
 }
-  
+  wilsonian.move();
+  wilsonian.show();
 }
-public void KeyPressed() {
+public void keyPressed() {
     if(keyCode == LEFT) { // left key
-      wilsonian.rotate(-2);
+      wilsonian.rotate(-15);
     }
     if(keyCode == RIGHT) { //right key
-      wilsonian.rotate(2);
+      wilsonian.rotate(15);
     }
-    if(keyCode == UP) { //up key
-      wilsonian.accelerate(10);
+    if(keyCode == 38) { //up key
+      wilsonian.accelerate(1);
     }
     if(keyCode == DOWN) { // down key
-      wilsonian.accelerate(-10);
+      wilsonian.accelerate(-1);
     }
 //hyperspace
   if(keyCode == 79) //o key 
@@ -47,18 +50,22 @@ class SpaceShip extends Floater
 {   
   public SpaceShip() {
   corners = 5;
-  xCorners = new int[corners];
-  yCorners = new int[corners];
-  xCorners[0] = 340;
-  yCorners[0] = 340;
-  xCorners[1] = 364;
-  yCorners[1] = 350;
-  xCorners[2] = 340;
-  yCorners[2] = 360;
-  xCorners[3] = 347;
-  yCorners[3] = 353;
-  xCorners[4] = 347;
-  yCorners[4] = 347;
+  //xCorners = new int[corners];
+  //yCorners = new int[corners];
+ /* xCorners[0] = -10;
+  yCorners[0] = -10;
+  xCorners[1] = 14;
+  yCorners[1] = 0;
+  xCorners[2] = -10;
+  yCorners[2] = 10;
+  xCorners[3] = -3;
+  yCorners[3] = 3;
+  xCorners[4] = -3;
+  yCorners[4] = -3; */
+  int []xS = {-10, 14, -10, -3, -3};
+  int []yS = {-10, 0, 10, 3, -3};
+  xCorners= xS;
+  yCorners= yS;  
 }
 public void setX(int x) {myCenterX = x;}
 public int getX() {return (int)myCenterX;}  
