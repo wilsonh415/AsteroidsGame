@@ -80,6 +80,27 @@ public void setPointDirection(int degrees) {myPointDirection = degrees;}
 public double getPointDirection() {return myPointDirection;} 
 }
 
+class Asteroid extends Floater {
+  int speed;
+  public Asteroid() {
+    speed = ((int)((Math.random()*2)-4));
+    int []xS2 = {-3, -1, 2, 1, -2, -4};
+    int []yS2 = {-3, -4, -2, 1, 2, 0};
+    xCorners = xS2;
+    yCorners = yS2;
+  }
+public void setX(int x) {myCenterX = x;}
+public int getX() {return (int)myCenterX;}  
+public void setY(int y) {myCenterY = y;}   
+public int getY() {return (int)myCenterY;}  
+public void setDirectionX(double x) {myDirectionX = x;} 
+public double getDirectionX() {return myDirectionX;}  
+public void setDirectionY(double y) {myDirectionY = y;}  
+public double getDirectionY() {return myDirectionY;}  
+public void setPointDirection(int degrees) {myPointDirection = degrees;}   
+public double getPointDirection() {return myPointDirection;} 
+}
+
 class Stars {
   private int myX, myY;
   public Stars() {
