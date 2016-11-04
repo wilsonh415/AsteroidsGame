@@ -30,20 +30,21 @@ public void keyPressed() {
       wilsonian.rotate(15);
     }
     if(keyCode == 38) { //up key
-      wilsonian.accelerate(1);
+      wilsonian.accelerate(.2);
     }
     if(keyCode == DOWN) { // down key
-      wilsonian.accelerate(-1);
+      wilsonian.accelerate(-.2);
     }
 //hyperspace
   if(keyCode == 79) //o key 
   {
     //direction
-    wilsonian.setDirectionX((int)((Math.random()*2)*PI));
-    wilsonian.setDirectionY((int)((Math.random()*2)*PI));
+    wilsonian.setDirectionX(0);
+    wilsonian.setDirectionY(0);
     //position
     wilsonian.setX((int)(Math.random()*700));
     wilsonian.setY((int)(Math.random()*700));
+    wilsonian.setPointDirection((int)(Math.random()*360));
   }
 }
 class SpaceShip extends Floater  
