@@ -1,24 +1,33 @@
 //your variable declarations here
 Stars[] theSky = new Stars[500];
 SpaceShip wilsonian = new SpaceShip();
+Asteroids[] asteroidians = new Asteroids[150];
+
 
 public void setup() 
 {
 size(700,700);
-background(125);
+background(255);
 for(int i = 0; i < theSky.length; i++) {
   theSky[i] = new Stars();
+}
+for(int j = 0; j < asteroidians.length; j++) {
+  asteroidians[j] = new Asteroids();
 }
 wilsonian.setX(350);
 wilsonian.setY(350);
 }
 public void draw() 
 {
-  background(125);
+  background(255);
   
   for(int i = 0; i < theSky.length; i++) {
   theSky[i].show();
 }
+  for(int j = 0; j < asteroidians.length; j++) {
+    asteroidians[j].show();
+    asteroidians[j].move();
+  }
   wilsonian.move();
   wilsonian.show();
 }
@@ -66,7 +75,7 @@ class SpaceShip extends Floater
   int []xS = {-10, 14, -10, -3, -3};
   int []yS = {-10, 0, 10, 3, -3};
   xCorners= xS;
-  yCorners= yS;  
+  yCorners= yS;
 }
 public void setX(int x) {myCenterX = x;}
 public int getX() {return (int)myCenterX;}  
@@ -80,15 +89,26 @@ public void setPointDirection(int degrees) {myPointDirection = degrees;}
 public double getPointDirection() {return myPointDirection;} 
 }
 
-class Asteroid extends Floater {
-  int speed;
-  public Asteroid() {
-    speed = ((int)((Math.random()*2)-4));
-    int []xS2 = {-3, -1, 2, 1, -2, -4};
-    int []yS2 = {-3, -4, -2, 1, 2, 0};
-    xCorners = xS2;
-    yCorners = yS2;
+
+class Asteroids extends Floater {
+  int rotSpeed, myColor;
+  public Asteroids() {
+    corners = 5;
+    rotSpeed = ((int)((Math.random()*PI)*2));
+    int []xS = {-3, -1, 2, 1, -2, -4};
+    int []yS = {-3, -4, -2, 1, 2, 0};
+    xCorners = xS;
+    yCorners = yS;
+    myColor = ((int)(Math.random()*255));
   }
+  public void show() {
+    noStroke();
+    super.move();
+  }
+  public void move() {
+    rotate(rotSpeed);
+  }
+    
 public void setX(int x) {myCenterX = x;}
 public int getX() {return (int)myCenterX;}  
 public void setY(int y) {myCenterY = y;}   
@@ -100,6 +120,7 @@ public double getDirectionY() {return myDirectionY;}
 public void setPointDirection(int degrees) {myPointDirection = degrees;}   
 public double getPointDirection() {return myPointDirection;} 
 }
+
 
 class Stars {
   private int myX, myY;
@@ -133,6 +154,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   abstract public void setPointDirection(int degrees);
   abstract public double getPointDirection();
 
+
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
   public void accelerate (double dAmount)   
   {          
@@ -152,6 +174,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     //change the x and y coordinates by myDirectionX and myDirectionY       
     myCenterX += myDirectionX;    
     myCenterY += myDirectionY;     
+
 
     //wrap around screen    
     if(myCenterX > width)
@@ -189,4 +212,5 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     endShape(CLOSE);  
   }   
 } 
+
 
