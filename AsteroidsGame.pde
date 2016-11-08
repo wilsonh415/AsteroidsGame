@@ -1,7 +1,7 @@
 //your variable declarations here
 Stars[] theSky = new Stars[500];
 SpaceShip wilsonian = new SpaceShip();
-Asteroids[] asteroidians = new Asteroids[150];
+Asteroids[] asteroidians = new Asteroids[50];
 
 
 public void setup() 
@@ -13,9 +13,13 @@ for(int i = 0; i < theSky.length; i++) {
 }
 for(int j = 0; j < asteroidians.length; j++) {
   asteroidians[j] = new Asteroids();
+  asteroidians[j].setX((int)(Math.random()*700));
+  asteroidians[j].setY((int)(Math.random()*700));
+
 }
 wilsonian.setX(350);
 wilsonian.setY(350);
+
 }
 public void draw() 
 {
@@ -95,17 +99,18 @@ class Asteroids extends Floater {
   public Asteroids() {
     corners = 5;
     rotSpeed = ((int)((Math.random()*PI)*2));
-    int []xS = {-3, -1, 2, 1, -2, -4};
-    int []yS = {-3, -4, -2, 1, 2, 0};
+    int []xS = {-7, -1, 2, 6, -2, -4};
+    int []yS = {-7, -4, -2, 6, 2, 0};
     xCorners = xS;
     yCorners = yS;
     myColor = ((int)(Math.random()*255));
   }
   public void show() {
     noStroke();
-    super.move();
+    super.show();
   }
   public void move() {
+    super.move();
     rotate(rotSpeed);
   }
     
