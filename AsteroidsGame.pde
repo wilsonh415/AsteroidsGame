@@ -7,7 +7,7 @@ Asteroids[] asteroidians = new Asteroids[50];
 public void setup() 
 {
 size(700,700);
-background(255);
+background(0);
 for(int i = 0; i < theSky.length; i++) {
   theSky[i] = new Stars();
 }
@@ -23,7 +23,7 @@ wilsonian.setY(350);
 }
 public void draw() 
 {
-  background(255);
+  background(0);
   
   for(int i = 0; i < theSky.length; i++) {
   theSky[i].show();
@@ -80,6 +80,7 @@ class SpaceShip extends Floater
   int []yS = {-10, 0, 10, 3, -3};
   xCorners= xS;
   yCorners= yS;
+  myColor = color(255,255,0);
 }
 public void setX(int x) {myCenterX = x;}
 public int getX() {return (int)myCenterX;}  
@@ -89,21 +90,21 @@ public void setDirectionX(double x) {myDirectionX = x;}
 public double getDirectionX() {return myDirectionX;}  
 public void setDirectionY(double y) {myDirectionY = y;}  
 public double getDirectionY() {return myDirectionY;}  
-public void setPointDirection(int degrees) {myPointDirection = degrees;}   
+public void setPointDirection(int degrees) {myPointDirection = degrees;} 
 public double getPointDirection() {return myPointDirection;} 
 }
 
 
 class Asteroids extends Floater {
-  int rotSpeed, myColor;
+  int rotSpeed;
   public Asteroids() {
     corners = 5;
     rotSpeed = ((int)((Math.random()*PI)*2));
-    int []xS = {-7, -1, 2, 6, -2, -4};
-    int []yS = {-7, -4, -2, 6, 2, 0};
+    int []xS = {-13, -1, 9, 11, 3, -9};
+    int []yS = {-3, -8, -6, 2, 7, -5};
     xCorners = xS;
     yCorners = yS;
-    myColor = ((int)(Math.random()*255));
+    myColor = color(125);
   }
   public void show() {
     noStroke();
@@ -134,6 +135,7 @@ class Stars {
   myY = (int)(Math.random()*700);
   }
   public void show() {
+    noStroke();
     fill(0,255,0);
     ellipse(myX, myY, 5, 5);
   }
