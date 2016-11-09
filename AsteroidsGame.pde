@@ -2,7 +2,7 @@
 Stars[] theSky = new Stars[500];
 SpaceShip wilsonian = new SpaceShip();
 Asteroids[] asteroidians = new Asteroids[50];
-
+ArrayList myList = new ArrayList();
 
 public void setup() 
 {
