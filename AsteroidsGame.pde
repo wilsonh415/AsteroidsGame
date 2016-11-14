@@ -2,7 +2,7 @@
 Stars[] theSky = new Stars[500];
 SpaceShip wilsonian = new SpaceShip();
 Asteroids[] asteroidians = new Asteroids[50];
-ArrayList myList = new ArrayList();
+ArrayList <Asteroids> asteroidianss = new ArrayList <Asteroids> ();
 
 public void setup() 
 {
@@ -28,13 +28,14 @@ public void draw()
   for(int i = 0; i < theSky.length; i++) {
   theSky[i].show();
 }
-  for(int j = 0; j < asteroidians.length; j++) {
+   for(int j = 0; j < asteroidians.length; j++) {
     asteroidians[j].show();
     asteroidians[j].move();
   }
   wilsonian.move();
   wilsonian.show();
 }
+
 public void keyPressed() {
     if(keyCode == LEFT) { // left key
       wilsonian.rotate(-15);
