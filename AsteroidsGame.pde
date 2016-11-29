@@ -1,8 +1,8 @@
 //your variable declarations here
 Stars[] theSky = new Stars[500];
 SpaceShip wilsonian = new SpaceShip();
-Asteroids[] asteroidians = new Asteroids[50];
-ArrayList <Asteroids> asteroidianss = new ArrayList <Asteroids> ();
+// Asteroids[] asteroidians = new Asteroids[50];
+ArrayList <Asteroids> asteroidians = new ArrayList <Asteroids> ();
 
 public void setup() 
 {
@@ -11,11 +11,17 @@ background(0);
 for(int i = 0; i < theSky.length; i++) {
   theSky[i] = new Stars();
 }
-for(int j = 0; j < asteroidians.length; j++) {
+/* for(int j = 0; j < asteroidians.length; j++) {https:
   asteroidians[j] = new Asteroids();
   asteroidians[j].setX((int)(Math.random()*700));
   asteroidians[j].setY((int)(Math.random()*700));
 
+}
+*/
+for(int j = 0; j <50; j++) {
+asteroidians.add((j), new Asteroids());
+asteroidians.get(j).setX((int)(Math.random()*700));
+asteroidians.get(j).setY((int)(Math.random()*700));
 }
 wilsonian.setX(350);
 wilsonian.setY(350);
@@ -28,10 +34,19 @@ public void draw()
   for(int i = 0; i < theSky.length; i++) {
   theSky[i].show();
 }
-   for(int j = 0; j < asteroidians.length; j++) {
+  /*  for(int j = 0; j < asteroidians.length; j++) {
     asteroidians[j].show();
     asteroidians[j].move();
   }
+  */
+  for(int j = 0; j < asteroidians.size(); j++) {
+    if(wilsonian.getX(), asteroidians.getX(), wilsonian.getY(), asteroidians.getY()) {
+      wilsonian.remove(j);
+    }
+    asteroidians.get(j).show();
+    asteroidians.get(j).move();
+  }
+
   wilsonian.move();
   wilsonian.show();
 }
