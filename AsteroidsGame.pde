@@ -3,7 +3,7 @@ Stars[] theSky = new Stars[500];
 SpaceShip wilsonian = new SpaceShip();
 // Asteroids[] asteroidians = new Asteroids[50];
 ArrayList <Asteroids> asteroidians = new ArrayList <Asteroids> ();
-
+int distance;
 public void setup() 
 {
 size(700,700);
@@ -40,7 +40,9 @@ public void draw()
   }
   */
   for(int j = 0; j < asteroidians.size(); j++) {
-    if(wilsonian.getX(), asteroidians.getX(), wilsonian.getY(), asteroidians.getY()) {
+   distance = ((int)Math.sqrt((wilsonian.getX()-asteroidians.getX(j).getX())*(wilsonian.getX()-asteroidians.getX(j).getX()) 
+    + (wilsonian.getY()-asteroidians.getY(j).getY())*(wilsonian.getY()-asteroidians.getY(j).getY()));
+    if(distance > 20) {
       wilsonian.remove(j);
     }
     asteroidians.get(j).show();
