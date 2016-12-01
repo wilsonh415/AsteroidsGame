@@ -32,16 +32,15 @@ public void draw()
   for(int i = 0; i < theSky.length; i++) {
   theSky[i].show();
 }
-    for(int j = 0; j < 80; j++) {
-    asteroidians.get(j).show();
-    asteroidians.get(j).move();
-  }
+
   for(int j = 0; j < asteroidians.size(); j++) {
    distance = (int)Math.sqrt((wilsonian.getX()-asteroidians.get(j).getX())*(wilsonian.getX()-asteroidians.get(j).getX()) 
     + (wilsonian.getY()-asteroidians.get(j).getY())*(wilsonian.getY()-asteroidians.get(j).getY()));
-    if(distance > 20) {
+    if(distance <= 20) {
       asteroidians.remove(j);
     }
+    asteroidians.get(j).show();
+    asteroidians.get(j).move();
   }
   wilsonian.move();
   wilsonian.show();
@@ -55,10 +54,10 @@ public void keyPressed() {
       wilsonian.rotate(15);
     }
     if(keyCode == 38) { //up key
-      wilsonian.accelerate(.2);
+      wilsonian.accelerate(.1);
     }
     if(keyCode == DOWN) { // down key
-      wilsonian.accelerate(-.2);
+      wilsonian.accelerate(-.1);
     }
 //hyperspace
   if(keyCode == 79) //o key 
