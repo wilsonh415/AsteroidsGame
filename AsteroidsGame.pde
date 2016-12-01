@@ -11,21 +11,19 @@ background(0);
 for(int i = 0; i < theSky.length; i++) {
   theSky[i] = new Stars();
 }
-/* for(int j = 0; j < asteroidians.length; j++) {https:
+/* for(int j = 0; j < asteroidians.length; j++) {
   asteroidians[j] = new Asteroids();
   asteroidians[j].setX((int)(Math.random()*700));
   asteroidians[j].setY((int)(Math.random()*700));
-
 }
 */
-for(int j = 0; j <50; j++) {
+for(int j = 0; j <80; j++) {
 asteroidians.add((j), new Asteroids());
 asteroidians.get(j).setX((int)(Math.random()*700));
 asteroidians.get(j).setY((int)(Math.random()*700));
 }
 wilsonian.setX(350);
 wilsonian.setY(350);
-
 }
 public void draw() 
 {
@@ -34,21 +32,17 @@ public void draw()
   for(int i = 0; i < theSky.length; i++) {
   theSky[i].show();
 }
-  /*  for(int j = 0; j < asteroidians.length; j++) {
-    asteroidians[j].show();
-    asteroidians[j].move();
-  }
-  */
-  for(int j = 0; j < asteroidians.size(); j++) {
-   distance = ((int)Math.sqrt((wilsonian.getX()-asteroidians.getX(j).getX())*(wilsonian.getX()-asteroidians.getX(j).getX()) 
-    + (wilsonian.getY()-asteroidians.getY(j).getY())*(wilsonian.getY()-asteroidians.getY(j).getY()));
-    if(distance > 20) {
-      wilsonian.remove(j);
-    }
+    for(int j = 0; j < 80; j++) {
     asteroidians.get(j).show();
     asteroidians.get(j).move();
   }
-
+  for(int j = 0; j < asteroidians.size(); j++) {
+   distance = (int)Math.sqrt((wilsonian.getX()-asteroidians.get(j).getX())*(wilsonian.getX()-asteroidians.get(j).getX()) 
+    + (wilsonian.getY()-asteroidians.get(j).getY())*(wilsonian.getY()-asteroidians.get(j).getY()));
+    if(distance > 20) {
+      asteroidians.remove(j);
+    }
+  }
   wilsonian.move();
   wilsonian.show();
 }
@@ -111,8 +105,6 @@ public double getDirectionY() {return myDirectionY;}
 public void setPointDirection(int degrees) {myPointDirection = degrees;} 
 public double getPointDirection() {return myPointDirection;} 
 }
-
-
 class Asteroids extends Floater {
   int rotSpeed;
   public Asteroids() {
