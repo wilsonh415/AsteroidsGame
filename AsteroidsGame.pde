@@ -38,6 +38,7 @@ public void draw()
     + (wilsonian.getY()-asteroidians.get(j).getY())*(wilsonian.getY()-asteroidians.get(j).getY()));
     if(distance <= 20) {
       asteroidians.remove(j);
+      break;
     }
     asteroidians.get(j).show();
     asteroidians.get(j).move();
