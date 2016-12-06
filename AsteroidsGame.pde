@@ -3,32 +3,46 @@ Stars[] theSky = new Stars[500];
 SpaceShip wilsonian = new SpaceShip();
 // Asteroids[] asteroidians = new Asteroids[50];
 ArrayList <Asteroids> asteroidians = new ArrayList <Asteroids> ();
+ArrayList <Bullet> wilsons = new ArrayList <Bullet> ();
 int distance;
-public void setup() 
-{
+boolean shoot = false;
+
+public void setup() {
 size(700,700);
 background(0);
+
 for(int i = 0; i < theSky.length; i++) {
   theSky[i] = new Stars();
 }
+
 /* for(int j = 0; j < asteroidians.length; j++) {
   asteroidians[j] = new Asteroids();
   asteroidians[j].setX((int)(Math.random()*700));
   asteroidians[j].setY((int)(Math.random()*700));
 }
 */
+
 for(int j = 0; j <80; j++) {
 asteroidians.add((j), new Asteroids());
 asteroidians.get(j).setX((int)(Math.random()*700));
 asteroidians.get(j).setY((int)(Math.random()*700));
 }
+
+for(int i =0; i < wilson.size(); i++) {
+  if(shoot == true) {
+wilsons.add((i), new Bullet());
+wilsons.get(i).setX(wilsonian.getX());
+wilsons.get(i).setY(wilsonian.getY());
+  }
+}
+
 wilsonian.setX(350);
 wilsonian.setY(350);
+
 }
-public void draw() 
-{
+
+public void draw() {
   background(0);
-  
   for(int i = 0; i < theSky.length; i++) {
   theSky[i].show();
 }
@@ -46,7 +60,6 @@ public void draw()
   wilsonian.move();
   wilsonian.show();
 }
-
 public void keyPressed() {
     if(keyCode == LEFT) { // left key
       wilsonian.rotate(-15);
@@ -67,10 +80,10 @@ public void keyPressed() {
     wilsonian.setDirectionX(0);
     wilsonian.setDirectionY(0);
     //position
+
     wilsonian.setX((int)(Math.random()*700));
     wilsonian.setY((int)(Math.random()*700));
     wilsonian.setPointDirection((int)(Math.random()*360));
-  }
 }
 class SpaceShip extends Floater  
 {   
@@ -124,7 +137,6 @@ class Asteroids extends Floater {
     super.move();
     rotate(rotSpeed);
   }
-    
 public void setX(int x) {myCenterX = x;}
 public int getX() {return (int)myCenterX;}  
 public void setY(int y) {myCenterY = y;}   
