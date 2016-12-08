@@ -8,21 +8,15 @@ int distance;
 int distance2;
 boolean shoot = false;
 
+
 public void setup() {
 size(700,700);
 background(0);
 
+
 for(int i = 0; i < theSky.length; i++) {
   theSky[i] = new Stars();
 }
-
-/* for(int j = 0; j < asteroidians.length; j++) {
-  asteroidians[j] = new Asteroids();
-  asteroidians[j].setX((int)(Math.random()*700));
-  asteroidians[j].setY((int)(Math.random()*700));
-}
-*/
-
 for(int j = 0; j <80; j++) {
 asteroidians.add((j), new Asteroids());
 asteroidians.get(j).setX((int)(Math.random()*700));
@@ -30,35 +24,42 @@ asteroidians.get(j).setY((int)(Math.random()*700));
 }
 for(int z =0; z < 1; z++) {
 bulletian.add((z), new Bullet());
-//bulletian.get(i).setX(wilsonian.getX());
-//bulletian.get(i).setY(wilsonian.getY());
-//++;
 }
-
 wilsonian.setX(350);
 wilsonian.setY(350);
 
+
 }
+
 
 public void draw() {
   background(0);
   for(int i = 0; i < theSky.length; i++) {
   theSky[i].show();
 }
-
-  for(int j = 0; j < asteroidians.size(); j++) {
-
-    for(int z = 0; z < bulletian.size(); z++) {
-
-   distance = (int)Math.sqrt((wilsonian.getX()-asteroidians.get(j).getX())*(wilsonian.getX()-asteroidians.get(j).getX()) 
+ for(int j = 0; j < asteroidians.size(); j++) {
+    asteroidians.get(j).show();
+    asteroidians.get(j).move();
+distance = (int)Math.sqrt((wilsonian.getX()-asteroidians.get(j).getX())*(wilsonian.getX()-asteroidians.get(j).getX()) 
     + (wilsonian.getY()-asteroidians.get(j).getY())*(wilsonian.getY()-asteroidians.get(j).getY()));
     if(distance <= 20) {
       asteroidians.remove(j);
       break;
     }
-    if(shoot == true) {
+ }
+ for(int z = 0; z < bulletian.size(); z++) {
+   if(shoot == true) {
     bulletian.get(z).show();
     bulletian.get(z).move();
+   }
+ }
+  for(int j = 0; j < asteroidians.size(); j++) {
+
+
+    for(int z = 0; z < bulletian.size(); z++) {
+
+
+    if(shoot == true) {
     distance2 = (int)Math.sqrt((bulletian.get(z).getX()-asteroidians.get(j).getX())*(bulletian.get(z).getX()-asteroidians.get(j).getX()) 
      + (bulletian.get(z).getY()-asteroidians.get(j).getY())*(bulletian.get(z).getY()-asteroidians.get(j).getY()));
     if(distance2 <= 10) {
@@ -66,25 +67,15 @@ public void draw() {
     break;
     }
  }
-    asteroidians.get(j).show();
-    asteroidians.get(j).move();
+ 
   }
   wilsonian.move();
   wilsonian.show();
 
- /* for(int z = 0; z < bulletian.size(); z++ ) {
-    if(shoot == true) {
-bulletian.get(z).show();
-bulletian.get(z).move();
- distance2 = (int)Math.sqrt((bulletian.get(z).getX()-asteroidians.get(j).getX())*(bulletian.get(z).getX()-asteroidians.get(j).getX()) 
-    + (bulletian.get(z).getY()-asteroidians.get(j).getY())*(bulletian.get(z).getY()-asteroidians.get(j).getY()));
- if(distance2 <= 10) {
-    asteroidians.remove(j);
-    break;
-    }
- } */
+
   }
 }
+
 
 public void keyPressed() {
     if(keyCode == LEFT) { // left key
@@ -106,6 +97,7 @@ public void keyPressed() {
     wilsonian.setDirectionX(0);
     wilsonian.setDirectionY(0);
     //position
+
 
     wilsonian.setX((int)(Math.random()*700));
     wilsonian.setY((int)(Math.random()*700));
@@ -181,6 +173,8 @@ public double getPointDirection() {return myPointDirection;}
 }
 
 
+
+
 class Stars {
   private int myX, myY;
   public Stars() {
@@ -193,6 +187,7 @@ class Stars {
     ellipse(myX, myY, 5, 5);
   }
 }
+
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
@@ -215,6 +210,8 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   abstract public double getPointDirection();
 
 
+
+
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
   public void accelerate (double dAmount)   
   {          
@@ -234,6 +231,8 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     //change the x and y coordinates by myDirectionX and myDirectionY       
     myCenterX += myDirectionX;    
     myCenterY += myDirectionY;     
+
+
 
 
     //wrap around screen    
