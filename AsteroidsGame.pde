@@ -144,6 +144,8 @@ public double getPointDirection() {return myPointDirection;}
 class Asteroids extends Floater {
   int rotSpeed;
   public Asteroids() {
+    myDirectionX = ((Math.random()*2)-2);
+    myDirectionY = ((Math.random()*2)-2);
     corners = 5;
     rotSpeed = ((int)((Math.random()*PI)*2));
     int []xS = {-13, -1, 9, 11, 3, -9};
@@ -178,6 +180,7 @@ public double getPointDirection() {return myPointDirection;}
 class Stars {
   private int myX, myY;
   public Stars() {
+
   myX = (int)(Math.random()*700);
   myY = (int)(Math.random()*700);
   }
