@@ -85,10 +85,10 @@ public void keyPressed() {
       wilsonian.rotate(15);
     }
     if(keyCode == 38) { //up key
-      wilsonian.accelerate(.1);
+      wilsonian.accelerate(.01);
     }
     if(keyCode == DOWN) { // down key
-      wilsonian.accelerate(-.1);
+      wilsonian.accelerate(-.01);
     }
 //hyperspace
   if(keyCode == 79) //o key 
